@@ -10,34 +10,26 @@
 #                                                                              #
 # **************************************************************************** #
 
-FT_FUNCTIONS = ft_print_cs.c \
-               ft_print_iduxXp.c \
-               ft_printf.c
+SRC = 	ft_print_cs.c \
+		ft_print_iduxXp.c \
+		ft_printf.c
 
 NAME = libftprintf.a
-
 CC = cc
+CFLAGS = -Wall -Wextra -Werror
 
-FLAGS = -Wall -Wextra -Werror
+OBJ = $(SRC:.c=.o)
 
-OBJ = $(FT_FUNCTIONS:.c=.o)
-	
-%.o: %.c
-	@cc $(FLAGS) -c $< -o $@
-RM = rm -f
-	
 all: $(NAME)
 
-$(NAME): $(0BJ)
-	@ar rcs $(NAME) $(OBJ)
+$(NAME): $(OBJ)
+	@ar rc $(NAME) $(OBJ)
+
 clean:
-	@$(RM) $(OBJ)
-	@$(RM) a.out
-	@$(RM) libftprintf.h.gch
-	@$(RM) libftprintf.so
+	@rm -f $(OBJ)
 
 fclean: clean
-	@$(RM) $(NAME)
+	@rm -f $(NAME) 
 
 re: fclean all
 
