@@ -30,7 +30,7 @@ int	ft_print_args(va_list args, char format)
 	if (format == 'x' || format == 'X')
                 arg_len = ft_put_xX(va_arg(args, unsigned int), format);
 	if (format == 'p')
-                arg_len = ft_put_id(va_arg(args, unsigned long long));
+                arg_len = ft_put_p(va_arg(args, unsigned long long));
 	return(arg_len);
 }
 
@@ -51,20 +51,21 @@ int	ft_printf(const char *s_format, ...)
 			i++;
 		}
 		else
-			len += ft_put_c(*s_format);
+			len += ft_put_c(s_format[i]);
 		i++;
 	}
 	va_end(args);
 	return (len);
 }
-int main(void)
+/*int main(void)
 {
-	int d = 364;
+	int d = 0;
+	unsigned long long test = 4294967296;
 	char l = 'L';
 	char *str = "era uma vez";
 	printf("\nmy function:\n");
-	printf("\nret value: %d\n", ft_printf(" char         = %c\n str          = %s\n pointer      = %p\n dec          = %d\n int          = %i\n unsigned int = %u\n hexmin       = %x\n hexhigh      = %X\n percent      = %%\n ", l, str, str, d, d, d, d, d));
+	printf("\nret value: %d\n", ft_printf(" char         = %c\n str          = %s\n pointer      = %p\n dec          = %d\n int          = %i\n unsigned int = %u\n hexmin       = %x\n hexhigh      = %X\n percent      = %%\n ", l, str, str, d, d, test, d, d));
 	printf("\nprintf function:\n");
 	printf("\nret value: %d\n", printf(" char         = %c\n str          = %s\n pointer      = %p\n dec          = %d\n int          = %i\n unsigned int = %u\n hexmin       = %x\n hexhigh      = %X\n percent      = %%\n ", l, str, str, d, d, d, d, d));
 	return(0);
-}
+}*/

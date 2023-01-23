@@ -12,15 +12,10 @@
 
 #include "ft_printf.h"
 
-int	ft_nbrlen(unsigned long long n, char format)
+int	ft_nbrlen(unsigned long long n, int base)
 {
 	int	len;
-	int	base;
 
-	if (format == 'd')
-		base = 10;
-      	else
-		base = 16;	
 	if (n == 0)
 		return (1);
 	len = 0;
@@ -48,7 +43,7 @@ int	ft_put_id(int  n)
 	if (n >= 10)
 		ft_put_id(n / 10);
 	ft_put_c(n % 10 + 48);
-	return(len + ft_nbrlen(n, 'd'));
+	return(len + ft_nbrlen(n, 10));
 }
 
 int	ft_put_u(unsigned int n)
@@ -56,10 +51,10 @@ int	ft_put_u(unsigned int n)
 	if (n >= 10)
 		ft_put_u(n / 10);
 	ft_put_c(n % 10 + 48);
-	return (ft_nbrlen(n, 'd'));
+	return (ft_nbrlen(n, 10));
 }
 
-int     ft_put_xX(unsigned int n, char format)
+int     ft_put_xX(unsigned long long n, char format)
 {
         if (n >= 16)
                 ft_put_xX(n / 16, format);
@@ -70,7 +65,7 @@ int     ft_put_xX(unsigned int n, char format)
 			ft_put_c(n % 16 + 55);
 		else
 			ft_put_c(n % 16 + 87);
-        return (ft_nbrlen(n, format));
+        return (ft_nbrlen(n, 16));
 }
 
 int	ft_put_p(unsigned long long p)
@@ -80,14 +75,9 @@ int	ft_put_p(unsigned long long p)
 		write(1,"(nil)", 5);
 		return (5);
 	}
-	write (1, "Ox", 2);
-	if (p >= 16)
-                ft_put_p(p / 16);
-	if (p % 16 < 10)
-		ft_put_c(p % 16 + 48);
-        else
-		ft_put_c(p % 16 + 87);
-	return (2 + ft_nbrlen(p, 'x'));
+	write (1, "0x", 2);
+	ft_put_xX(p, 'x');
+	return (2 + ft_nbrlen(p, 16));
 }
 
 /*int main()
