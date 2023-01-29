@@ -18,15 +18,13 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdio.h>
-/*# include <stdint.h>
-# include <limits.h>*/
-
 
 int	ft_put_c(char c);
 int	ft_put_s(char *s);
-int	ft_put_id(int  n);
+int	ft_put_id(int n);
 int	ft_put_u(unsigned int n);
-int ft_put_xX(unsigned long long n, char format);
+int	ft_put_x(unsigned long long n, char format);
 int	ft_put_p(unsigned long long p);
+int	ft_printf(const char *s_format, ...);
 
 #endif
