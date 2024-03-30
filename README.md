@@ -9,7 +9,7 @@ This project consisted in the recoding of the printf() function.
 ## :inbox_tray: **Cloning the repository**
 
 ```shell
-git clone git@github.com:rimarque/push_swap.git 
+git clone git@github.com:rimarque/printf.git 
 ```
 
 ## 💎 **Features**
