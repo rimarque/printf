@@ -1,7 +1,7 @@
 # **ft_printf**
 
 ## :speech_balloon: **About**
-This project consisted in the recoding of the printf() function.
+This project consists in the recoding of the printf() function.
 
 ## 🙋‍♀️ **Authorship**
 - [Rita Marques](https://github.com/rimarque)
